@@ -1,21 +1,21 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { getUser } from "../container/uttils/auth.js"
 
 
-export default function PrivateRoute({ children }) {
+export default function PrivateRoute() {
   const router = useRouter();
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (!token) {
-      router.push("../slew/Login"); // redirect if no token
-    } 
+    const check = async () => {
+      const user = await getUser();
+      if (user) router.replace("/login");
+      else router.replace("/home");
+    };
+    check();
   }, [router]);
 
-  if (loading) return <p>Loading...</p>;
-
-  return <>{children}</>;
+  return <div className="text-center p-10">Redirecting...</div>;
 }
