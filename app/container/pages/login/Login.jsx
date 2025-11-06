@@ -1,19 +1,26 @@
 import Image from 'next/image'
-import React from 'react'
+import './style.css'; 
 
 const LoginPage = () => {
   return (
     <div className='flex w-full h-full'>
       <div className='"w-1/2'>
         <Image 
-          src={"/login-banner.png"}
+          src={"/left-banner.png"}
+          className='left-banner'
           alt='Login-banner'
           width={100}
           height={100}
            />
       </div>
       <div className='"w-1/2'>
-        rights
+        <Image 
+          src={"/left-banner.png"}
+          className='left-banner'
+          alt='Login-banner'
+          width={100}
+          height={100}
+           />
       </div>
     </div>
   )
